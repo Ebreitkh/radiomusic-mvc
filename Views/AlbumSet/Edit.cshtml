@@ -1,0 +1,36 @@
+﻿@model MusicRadio.Models.AlbumSet
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <div class="card bg-dark text-white">
+        <div class="card-header">
+            <h4 class="mb-0">Editar Álbum</h4>
+        </div>
+        <div class="card-body">
+            <form action="@Url.Action("Edit","AlbumSet")" method="post">
+                <input type="hidden" class="form-control" name="Id" value="@Html.DisplayTextFor(m =>m.Id)">
+
+                <div class="form-group">
+                    <label for="albumName">Nombre del Álbum</label>
+                    <input type="text" class="form-control" id="albumName" name="Name" value="@Html.DisplayTextFor(m =>m.Name)" required>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <button type="submit" class="btn btn-success">
+                        <i class="fas fa-save"></i> Guardar
+                    </button>
+                    <a class="btn btn-warning" href="@Url.Action("Index", "AlbumSet")">
+                        <i class="fas fa-arrow-left"></i> Volver
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Agrega Font Awesome para iconos -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">

@@ -1,0 +1,33 @@
+﻿@model MusicRadio.Models.AlbumSet
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <div class="card bg-dark text-white">
+        <div class="card-header">
+            <h4 class="mb-0">Eliminar Álbum</h4>
+        </div>
+        <div class="card-body">
+            <div class="alert alert-danger text-center">
+                <strong>¿Desea eliminar el álbum: "@Html.DisplayFor(m => m.Name)"?</strong>
+            </div>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-danger mx-2">
+                        <i class="fas fa-trash"></i> Eliminar
+                    </button>
+                    <a class="btn btn-secondary mx-2" href="@Url.Action("Index", "AlbumSet")">
+                        <i class="fas fa-arrow-left"></i> Cancelar
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+

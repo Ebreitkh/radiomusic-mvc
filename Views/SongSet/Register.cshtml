@@ -1,0 +1,42 @@
+﻿@model MusicRadio.Models.SongSet
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <div class="card bg-dark text-white">
+        <div class="card-header">
+            <h4 class="mb-0">Registrar Canción</h4>
+        </div>
+        <div class="card-body">
+            <form action="@Url.Action("Register", "SongSet")" method="post">
+                @Html.HiddenFor(model => model.Id)
+
+                <div class="form-group">
+                    <label for="albumSelect">Álbum</label>
+                    @Html.DropDownListFor(model => model.Album_id, (SelectList)ViewBag.Albums, "Seleccione un álbum", new { @class = "form-control", id = "albumSelect", required = "required" })
+                </div>
+
+                <div class="form-group">
+                    <label for="songName">Nombre de la Canción</label>
+                    @Html.TextBoxFor(model => model.Name, new { @class = "form-control", id = "songName", required = "required" })
+                </div>
+
+
+
+                <div class="d-flex justify-content-between">
+                    <button type="submit" class="btn btn-success">
+                        <i class="fas fa-save"></i> Guardar
+                    </button>
+                    <a class="btn btn-warning" href="@Url.Action("Index", "SongSet")">
+                        <i class="fas fa-arrow-left"></i> Volver
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,49 @@
+﻿@model List<MusicRadio.Models.AlbumSet>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <div class="card bg-dark text-white">
+        <div class="card-header">
+            <h4 class="mb-0">Lista de Álbumes</h4>
+        </div>
+        <div class="card-body">
+            <a class="btn btn-success mb-3" href="@Url.Action("Register","AlbumSet")">
+                <i class="fas fa-plus"></i> Crear nuevo
+            </a>
+
+            <div class="table-responsive">
+                <table class="table table-dark table-striped text-center">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Nombre del Álbum</th>
+                            <th style="width:150px">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Name</td>
+                                <td>
+                                    <a class="btn btn-primary btn-sm" href="@Url.Action("Edit","AlbumSet", new { idAlbumSet = item.Id })">
+                                        <i class="fas fa-edit"></i> Editar
+                                    </a>
+                                    <a class="btn btn-danger btn-sm" href="@Url.Action("Delete","AlbumSet", new { idAlbumSet = item.Id })">
+                                        <i class="fas fa-trash"></i> Eliminar
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
